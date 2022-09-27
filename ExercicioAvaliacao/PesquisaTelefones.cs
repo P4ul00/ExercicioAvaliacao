@@ -16,5 +16,9 @@ namespace ExercicioAvaliacao
         {
             InitializeComponent();
         }
+        private void PesquisaTelefones_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

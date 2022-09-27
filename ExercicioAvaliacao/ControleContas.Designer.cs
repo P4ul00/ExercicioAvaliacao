@@ -138,6 +138,7 @@
             this.Controls.Add(this.dgwContasPagar);
             this.Name = "ControleContas";
             this.Text = "ControleContas";
+            this.Load += new System.EventHandler(this.ControleContas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwContasPagar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwContasReceber)).EndInit();
             this.ResumeLayout(false);

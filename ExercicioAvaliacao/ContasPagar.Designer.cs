@@ -68,6 +68,7 @@
             this.dgwContasPagar.Name = "dgwContasPagar";
             this.dgwContasPagar.Size = new System.Drawing.Size(690, 135);
             this.dgwContasPagar.TabIndex = 13;
+            this.dgwContasPagar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwContasPagar_CellContentClick);
             this.dgwContasPagar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwContasPagar_CellDoubleClick);
             // 
             // btnPesquisar
@@ -115,6 +116,7 @@
             this.dtpDataVencimento.Name = "dtpDataVencimento";
             this.dtpDataVencimento.Size = new System.Drawing.Size(278, 20);
             this.dtpDataVencimento.TabIndex = 21;
+            this.dtpDataVencimento.ValueChanged += new System.EventHandler(this.dtpDataVencimento_ValueChanged);
             // 
             // txtIdContasPagar
             // 
@@ -208,6 +210,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ContasPagar";
             this.Text = "ContasPagar";
+            this.Load += new System.EventHandler(this.ContasPagar_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgwContasPagar)).EndInit();
             this.ResumeLayout(false);

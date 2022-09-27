@@ -16,16 +16,14 @@ namespace ExercicioAvaliacao
         {
             InitializeComponent();
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             Principal abrir = new Principal();
-            abrir.Show();
-            
+            abrir.Show();     
+        }
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
 
-            
-
-            
         }
     }
 }

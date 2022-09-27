@@ -16,26 +16,16 @@ namespace ExercicioAvaliacao
         public Agenda()
         {
             InitializeComponent();
-
-            mostrar();
-                      
+            Mostra();          
             btnDeletar.Visible = false;
             btnAlterar.Visible = false;
-            
-
         }
-        string continua = "yes";
-        
-
-        // IINSERIR
+        string continua = "sim";
         private void btnInserir_Click(object sender, EventArgs e)
         {
-
-            verificaVazio();
+            VerificaVazio();
             pegaData();
-
-
-            if (continua == "yes")
+            if (continua == "sim")
             {
                 try
                 {
@@ -47,31 +37,21 @@ namespace ExercicioAvaliacao
                         string sql = "insert into agenda (titulo, hora, data,descricao) values ('"+ txtTitulo.Text + "','" + cmbHora.Text + "','" + Globals.DataNova + "','" + rtbDescricao.Text + "')";
                         MySqlCommand cmd = new MySqlCommand(sql, cnn);
                         cmd.ExecuteNonQuery();
-
-
-
                     }
                 }
                 catch (Exception ex)
                 {
-
                     MessageBox.Show(ex.ToString());
                 }
             }
-
-
-            mostrar();
-            limpar();
+            Mostra();
+            Limpa();
         }
-
-        //DELETAR 
-     
 
         private void btnDeletar_Click(object sender, EventArgs e)
         {
             if (DialogResult.Yes == MessageBox.Show("Deseja realmente excluir", "Confirmação", MessageBoxButtons.YesNo))
             {
-
                 try
                 {
                     using (MySqlConnection cnn = new MySqlConnection())
@@ -82,65 +62,46 @@ namespace ExercicioAvaliacao
                         MySqlCommand cmd = new MySqlCommand(sql, cnn);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show(" Deletado com sucesso! ");
-
                     }
-                    limpar();
-
+                    Limpa();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
-
-
             }
-            mostrar();
-
-
+            Mostra();
         }
-
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            pegaData();
-            
+            pegaData();   
             try
             {
                 using (MySqlConnection cnn = new MySqlConnection())
                 {
                     cnn.ConnectionString = Globals.conexao;
-                    //cnn.ConnectionString = "server=localhost;database=controle;uid=root;pwd=;port=3306;Convert Zero DateTime = true";
                     cnn.Open();
                     string sql = "Update agenda set titulo='" + txtTitulo.Text + "', hora='" + cmbHora.Text + "',data='" + Globals.DataNova + "', descricao='" + rtbDescricao.Text + "' where idAgenda='" + txtIdAgenda.Text + "'";
                     MySqlCommand cmd = new MySqlCommand(sql, cnn);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Atualizado com sucesso!");
                 }
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
-               
+                MessageBox.Show(ex.ToString());  
             }
-            mostrar();
-
+            Mostra();
         }
-
-        
         void pegaData()
         {
             Globals.Data = dtpData.Value;
             string dataCurta = Globals.Data.ToShortDateString();
             string[] vetData = dataCurta.Split('/');
            Globals.DataNova = vetData[2] + "-" + vetData[1] + "-" + vetData[0];
-
-        }
-
-        
-
-        void mostrar()
+        }   
+        void Mostra()
         {
-            
             try
             {
                 using (MySqlConnection cnn = new MySqlConnection())
@@ -152,35 +113,28 @@ namespace ExercicioAvaliacao
                     MySqlDataAdapter adpter = new MySqlDataAdapter(sql, cnn);
                     adpter.Fill(table);
                     dgwAgenda.DataSource = table;
-
                     dgwAgenda.AutoGenerateColumns = false;
-
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
-
         }
-
-
-        void verificaVazio()
+        void VerificaVazio()
         {
             if (txtTitulo.Text == "" || rtbDescricao.Text == "")
             {
-                continua = "no";
+                continua = "nao";
                 MessageBox.Show("Preencha todos os campos");
             }
             else
             {
-                continua = "yes";
+                continua = "sim";
             }
-
         }
 
-        void limpar()
+        void Limpa()
         {
             txtIdAgenda.Text = "";
             txtTitulo.Clear();
@@ -188,11 +142,7 @@ namespace ExercicioAvaliacao
             btnInserir.Text = "INSERIR";
             btnDeletar.Visible = false;
             btnAlterar.Visible = false;
-
-
-
         }
-
         private void dgwAgenda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgwAgenda.CurrentRow.Index != -1)
@@ -201,25 +151,16 @@ namespace ExercicioAvaliacao
                 txtTitulo.Text = dgwAgenda.CurrentRow.Cells[1].Value.ToString();
                 cmbHora.Text = dgwAgenda.CurrentRow.Cells[2].Value.ToString();
                 dtpData.Value = Convert.ToDateTime(dgwAgenda.CurrentRow.Cells[3].Value.ToString());
-               
                 rtbDescricao.Text = dgwAgenda.CurrentRow.Cells[4].Value.ToString();
-
-              
-
-
                 btnDeletar.Visible = true;
                 btnAlterar.Visible = true;
                 btnInserir.Text = "Novo";
-
-
             }
         }
-
         private void txtPesquisar_TextChanged(object sender, EventArgs e)
         {
             try
             {
-
                 using (MySqlConnection cnn = new MySqlConnection())
                 {
                     cnn.ConnectionString = "server=localhost;database=controle;uid=root;pwd=;port=3306;Convert Zero DateTime = true";
@@ -239,8 +180,6 @@ namespace ExercicioAvaliacao
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-       
+        }   
     }
 }

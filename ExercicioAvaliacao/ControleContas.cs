@@ -16,19 +16,19 @@ namespace ExercicioAvaliacao
         {
             InitializeComponent();
         }
-
         private void btnContasPagar_Click(object sender, EventArgs e)
         {
-            ContasPagar contasPagar =   new ContasPagar();  
-            //contasPagar.MdiParent = this;
+            ContasPagar contasPagar=new ContasPagar();  
             contasPagar.Show(); 
         }
-
         private void btnContasReceber_Click(object sender, EventArgs e)
         {
-            ContasReceber contasreceber = new ContasReceber();
-            //contasreceber.MdiParent = this;
+            ContasReceber contasreceber=new ContasReceber();
             contasreceber.Show();   
+        }
+        private void ControleContas_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

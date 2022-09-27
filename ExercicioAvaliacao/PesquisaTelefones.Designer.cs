@@ -90,6 +90,7 @@
             this.Controls.Add(this.label1);
             this.Name = "PesquisaTelefones";
             this.Text = "PesquisaTelefones";
+            this.Load += new System.EventHandler(this.PesquisaTelefones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwTelefones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

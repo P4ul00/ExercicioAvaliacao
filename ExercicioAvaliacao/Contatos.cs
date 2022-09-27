@@ -16,16 +16,18 @@ namespace ExercicioAvaliacao
         {
             InitializeComponent();
         }
-
         private void btnInserir_Click(object sender, EventArgs e)
         {
 
         }
-
         private void btnCadastrarTelefone_Click(object sender, EventArgs e)
         {
             Telefones telefone = new Telefones();
             telefone.Show();
+        }
+        private void Contatos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

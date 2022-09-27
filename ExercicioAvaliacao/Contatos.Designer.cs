@@ -432,6 +432,7 @@
             this.Controls.Add(this.btnCadastrarTelefone);
             this.Name = "Contatos";
             this.Text = "Contato";
+            this.Load += new System.EventHandler(this.Contatos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwTelefones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwContatos)).EndInit();
             this.panel1.ResumeLayout(false);

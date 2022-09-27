@@ -101,6 +101,7 @@
             this.Controls.Add(this.btnLogin);
             this.Name = "FormLogin";
             this.Text = "Tela de Login";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
